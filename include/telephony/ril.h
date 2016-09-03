@@ -66,16 +66,8 @@ extern "C" {
  *
  * RIL_VERSION = 13 : This version includes new wakelock semantics and as the first
  *                    strongly versioned version it enforces structure use.
- * RIL_VERSION = 14 : New data structures are added, namely RIL_CarrierMatchType,
- *                    RIL_Carrier, RIL_CarrierRestrictions and RIL_PCO_Data.
- *                    New commands added: RIL_REQUEST_SET_CARRIER_RESTRICTIONS,
- *                    RIL_REQUEST_SET_CARRIER_RESTRICTIONS and
- *                    RIL_UNSOL_PCO_DATA
  */
-#if defined(USE_RIL_VERSION_10)
-#define RIL_VERSION 10
-#define LAST_IMPRECISE_RIL_VERSION 10
-#elif defined(USE_RIL_VERSION_11)
+#ifdef USE_RIL_VERSION_11
 #define RIL_VERSION 11
 #define LAST_IMPRECISE_RIL_VERSION 11
 #else
