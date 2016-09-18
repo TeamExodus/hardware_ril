@@ -6113,6 +6113,7 @@ struct RIL_Env {
 
     void (*RequestTimedCallback) (RIL_TimedCallback callback,
                                    void *param, const struct timeval *relativeTime);
+#if (RIL_VERSION == 12 && OSS_LIBRIL)
    /**
     * "t" is parameter passed in on previous call RIL_Notification routine
     *
@@ -6120,6 +6121,7 @@ struct RIL_Env {
     * by them and an ack needs to be sent back to java ril.
     */
     void (*OnRequestAck) (RIL_Token t);
+#endif
 };
 
 
@@ -6176,6 +6178,7 @@ void RIL_register (const RIL_RadioFunctions *callbacks);
 void RIL_onRequestComplete(RIL_Token t, RIL_Errno e,
                            void *response, size_t responselen);
 
+#if (RIL_VERSION == 12 && OSS_LIBRIL)
 /**
  * RIL_onRequestAck will be called by vendor when an Async RIL request was received by them and
  * an ack needs to be sent back to java ril. This doesn't mark the end of the command or it's
@@ -6187,6 +6190,7 @@ void RIL_onRequestComplete(RIL_Token t, RIL_Errno e,
  *          routine.
  */
 void RIL_onRequestAck(RIL_Token t);
+#endif
 
 #if defined(ANDROID_MULTI_SIM)
 /**
